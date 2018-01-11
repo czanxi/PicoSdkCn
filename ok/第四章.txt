@@ -13,13 +13,13 @@ Step1：新建工程
 
 创建cube1、cube2、 cube3，设置其Transform信息分别如下：
 
-.. image:: _static/4.2.PNG
+.. image:: _static/4.2.png
 图4.2 cube1 Transform
 
-.. image:: _static/4.3.PNG
+.. image:: _static/4.3.png
 图4.3 cube2 Transform
 
-.. image:: _static/4.4.PNG
+.. image:: _static/4.4.png
 图4.4 cube3 Transform
 
 Step2：导入SDK
@@ -27,17 +27,17 @@ Step2：导入SDK
 
 选择菜单Assets>Import Package>Custom Package…
 
-.. image:: _static/4.5.PNG
+.. image:: _static/4.5.png
 图4.5 导入Custom Package
 
 此时系统会弹出一个对话框，选择“PicoVR_Unity_SDK-版本号.unitypackage”后点击打开：
 
-.. image:: _static/4.6.PNG
+.. image:: _static/4.6.png
 图4.6 选择Unity Package
 
 打开后，系统又会弹出一个对话框，请根据需要导入相应的部分：
 
-.. image:: _static/4.7.PNG
+.. image:: _static/4.7.png
 图4.7 导入选项
 
 Step3：使用SDK
@@ -45,12 +45,12 @@ Step3：使用SDK
 
 进入Project选项卡，依次展开Assets>Pvr_UnitySDK>Prefabs，将Pvr_UnitySDK预制体拖放入场景，将其Transform组件的Positon和Rotation均设置为（0，0，0）：
 
-.. image:: _static/4.8.PNG
+.. image:: _static/4.8.png
 图4.8 Pvr_UnitySDK预制体所在目录
 
 放入后，场景的Hierarchy应入下图所示：
 
-.. image:: _static/4.9.PNG
+.. image:: _static/4.9.png
 图4.9 场景的Hierarchy
 
 为避免场景中其他Camera对SDK的立体渲染产生干扰，所以最后一部还需要删除上图中的Main Camera。
@@ -60,7 +60,7 @@ Step4：模拟运行
 
 点击运行按钮，在Game窗口中可看到如下：
 
-.. image:: _static/4.10.PNG
+.. image:: _static/4.10.png
 图4.10 模拟运行
 
 按住Alt，移动鼠标，画面跟着上下左右转动；按住Alt+点击鼠标左键 选择VR模式还是Mono模式（仅Unity Editor）。
@@ -70,12 +70,12 @@ Step5：打包
 
 打包前还要根据当前平台设置头部和手部的跟踪类型：进入Pvr_UnitySDK的Inspector面板，如果当前的目标平台不是Pico Neo，需要将Pvr_Unity SDK Manager组件的Head Pose属性设置为Three Dof，将Hand Pose设置为Three Pose：
 
-.. image:: _static/4.11.PNG
+.. image:: _static/4.11.png
 图4.11 适配目标平台
 
 打包时首先保存当前场景，然后进入File>Build Settings…，点击“Add Current”，将当然场景加入构建列表。还要在Platfrom处选中Android，然后点击“Switch Paltform”，最后点击Build即可完成打包。
 
-.. image:: _static/4.12.PNG
+.. image:: _static/4.12.png
 图4.12 打包
 
 
