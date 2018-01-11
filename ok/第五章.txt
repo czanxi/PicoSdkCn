@@ -13,7 +13,7 @@
 
 实现头部跟踪与前文SDK快速入门一致，只需要将Pvr_UnitySDK预制体放入场景即可。但是有一点需要注意，放入场景后，展开场景中的Pvr_UnitySDK物体，切换到其细节面板：
 
-.. image:: _static/5.1.PNG
+.. image:: _static/5.1.png
 图5.1 为Pico Goblin切换跟踪选项
 
 需要确保Pvr_Unity SDK Manager组件的如下属性：Head Pose：Three Dof；Hand Pose：Three Dof；Controller Num：One。
@@ -26,12 +26,12 @@ Pico 3dof Controller目前支持Pico Goblin、Pico U两种设备，使用Pico 3d
 
 1、展开Assets> Pvr_Controller> Prefabs，将Goblin_Controller预制体放到场景中，作为Pvr_UnitySDK子GameObject与Head同级：
 
-.. image:: _static/5.2.PNG
+.. image:: _static/5.2.png
 图5.2 Goblin_Controller预制体拖放位置
 
 2、展开Assets> Pvr_Controller> Prefabs，将ControllerManager预制体放到场景里，然后将Goblin_Controller挂在ControllerManager上的Pvr_Controller脚本中，将Goblin_Controller下的toast挂在Pvr_ControllerManager脚本中：
 
-.. image:: _static/5.3.PNG
+.. image:: _static/5.3.png
 图5.3 设置ControllerManager
 
 5.1.3	使用3dof手柄的按键、触摸板
@@ -67,7 +67,7 @@ Pico 3dof Controller目前支持Pico Goblin、Pico U两种设备，使用Pico 3d
 
 .. _触摸板的示意图
 
-.. image:: _static/5.4.PNG
+.. image:: _static/5.4.png
 图5.4 触摸板示意图
 
 **注意**：手柄的滑动功能是手指抬起后才判定滑动结束。
@@ -77,7 +77,7 @@ Pico 3dof Controller目前支持Pico Goblin、Pico U两种设备，使用Pico 3d
 
 Goblin HMD按键如下图所示：
 
-.. image:: _static/5.5.PNG
+.. image:: _static/5.5.png
 图5.5 Goblin HMD按键
 
 表5.2 Goblin HMD按键与Unity输入的对应关系
@@ -104,12 +104,12 @@ Pico Neo DK/ DKS实现头部跟踪与立体渲染的方法和Pico Gobliin一致�
 
 Pico Neo DK/DKS分体控制器如下所示：
 
-.. image:: _static/5.6.PNG
+.. image:: _static/5.6.png
 图5.6 Pico Neo DK/DKS分体控制器
 
 如想启用分体控制器的姿态跟踪，请展开Assets> Pvr_ExtraSensor> Scripts，将Pvr_ExtraSensor脚本附加到您想跟随分体控制器姿态的GameObject上：
 
-.. image:: _static/5.7.PNG
+.. image:: _static/5.7.png
 图5.7 启用分体控制器姿态跟踪
 
 启用Neo Controller姿态追踪后，PicoVRManager.SDK.boxQuaternion变量（四元数）会实时更新，可以直接读取boxQuaternion变量，也可以通过接口public Quaternion getBoxQuaternion()来获得Controller的姿态数据。
@@ -119,7 +119,7 @@ Pico Neo DK/DKS分体控制器如下所示：
 
 Pico Neo DK/DKS分体控制器采用游戏控制器标准按键，按键分布如下：
 
-.. image:: _static/5.8.PNG
+.. image:: _static/5.8.png
 图5.8 Pico Neo DK/DKS分体控制器按键分布
 
 可按下表使用分体控制器的按键输入：
@@ -144,7 +144,7 @@ Pico Neo DK/DKS分体控制器采用游戏控制器标准按键，按键分布�
 
 使用前，请参照下图设置Unity的input：
 
-.. image:: _static/5.9.PNG
+.. image:: _static/5.9.png
 图5.9 Unity input设置
 
 5.3	Pico Neo
@@ -155,7 +155,7 @@ Pico Neo DK/DKS分体控制器采用游戏控制器标准按键，按键分布�
 
 实现头部跟踪与前文SDK快速入门一致，只需要将Pvr_UnitySDK预制体放入场景即可。需要注意的是，Pico Neo支持多种跟踪方式。展开场景中的Pvr_UnitySDK物体，切换到其细节面板：
 
-.. image:: _static/5.10.PNG
+.. image:: _static/5.10.png
 图5.10 为Pico Goblin切换跟踪选项
 
 Head Recenter：当Head Pose为Six Dof时，只有勾选“Six Dof Head Recenter”才可以重置位置，否则长按Home键将只重置手柄姿态。
@@ -183,12 +183,12 @@ Head Recenter：当Head Pose为Six Dof时，只有勾选“Six Dof Head Recenter
 
 1、将CV_Controller0和CV_Controller1预制体放到Pvr_UnitySDK下，与Head同级。如下图所示：
 
-.. image:: _static/5.11.PNG
+.. image:: _static/5.11.png
 图5.11 6dof手柄预制体层级关系
 
 2、将ControllerManager预制体放到场景里，然后将CV_Controller0,CV_Controller1挂在ControllerManager上的Pvr_Controller中，如下图所示：
 
-.. image:: _static/5.12.PNG
+.. image:: _static/5.12.png
 图5.12 ControllerManager细节面板
 
 手柄按键的使用需要采用调用接口API的形式，具体API请参照第6章手柄相关接口。
@@ -196,7 +196,7 @@ Head Recenter：当Head Pose为Six Dof时，只有勾选“Six Dof Head Recenter
 
 **注意**：我们建议您在使用运动控制器手柄时，使射线与运动控制器呈现一定角度，这样能增加用户使用舒适度，而且能避免阻挡超声波模块引起的跟踪误差：
 
-.. image:: _static/5.13.PNG
+.. image:: _static/5.13.png
 图5.13 建议的射线角度
 
 5.3.3	使用6dof手柄的按键、触摸板
