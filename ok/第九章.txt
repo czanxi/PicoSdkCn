@@ -1,0 +1,14 @@
+﻿.. _第九章 辅助工具:
+
+第九章 辅助工具
+===============================
+
+9.1 显示帧速率
+----------
+
+
+如想实时显示帧速率，请进入Pvr_UnitySDK的Inspector面板，勾选Pvr_Unity SDK Manager组件下的“Show FPS in Scene”：
+
+.. image:: _static/9.1.jpg
+图9.1 FPS开启
+

@@ -1,0 +1,61 @@
+﻿.. _第八章 开发注意事项:
+
+第八章 开发注意事项
+===============================
+
+8.1 Unity版本兼容
+------------------------------
+
+
+SDK适配Unity5.2及以上版本(支持Unity2017.1.1、Unity2017.2.0，其他Unity2017版本暂未验证)，使用前请注意以下事项：
+
+- 个别游戏适配时需要勾选Player Setting内的Use 32-bit Display Buffer方可正常运行。
+
+- Unity版本不同FPS帧率可能存在差别。
+
+- UGUI在Unity 5.3.5f1版本中无法显示，5.3.5 P5已经修复问题并可以显示。
+
+- Unity Player Setting不要勾选Multithreaded Rendering选项。
+
+- Unity5.4.0及之后版本中，需要检查垂直同步设置，具体步骤如下：进入Edit>Project Settings>Quility，勾选Levels下的Simple，并确保Other下的V Sync Count项为 Don't Sync：
+
+.. image:: _static/8.1.jpg
+图8.1 检查垂直同步设置
+
+- Unity2017.2.0版本编译需要设置target API level 为Android5.0（Unity2017.2.0f3除外）。
+
+
+8.2 Android Manifest文件
+------------------------------
+
+如应用中不包含AndroidManifest文件，请直接用SDK中的AndroidManifest文件。如应用中包含AndroidManifest文件，请务必把SDK中的AndroidManifest文件合并进去。主要包含以下几点：
+
+- 在Pico Neo DK/DKS的项目中，需要添加特殊meta-data，否则会显示异常：
+
+::
+
+<meta-data android:name="com.picovr.type" android:value="vr"/>
+<meta-data android:name="com.picovr.display.orientation" android:value="180"/>
+
+- 在Pico Neo DK/DKS的项目中，所有需要显示的Acitivity需要继承自
+
+.. code-block:: java
+    
+    com.unity3d.player.UnityPlayerNativeActivityPico              
+
+
+- 在使用Pico1和Pico1s蓝牙操控的项目中，添加两个Service的定义
+
+::
+
+<service android:name="com.picovr.picovrlib.service.LarkConnectService" />
+<service android:name="com.picovr.picovrlib.ble.BluetoothLeService" />
+
+- 添加必要的权限
+
+::
+
+<uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+<uses-permission android:name="android.permission.BLUETOOTH" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+<uses-permission android:name="android.permission.INJECT_EVENTS" />

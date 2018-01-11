@@ -1,0 +1,1551 @@
+.. _第六章 API接口函数一览:
+
+第六章 API接口函数一览
+===============================
+
+6.1 获取版本信息
+----------
+
+UPvr_GetUnitySDKVersion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static string UPvr_GetUnitySDKVersion () 
+**功能**  
+
+    - 获取SDK版本号 
+**参数**
+
+    - 无
+**返回值**
+
+    - SDK版本号
+**调用方式**
+
+    - Pvr_UnitySDKAPI.System.UPvr_GetUnitySDKVersion()
+
+6.2	Sensor跟踪相关
+----------
+
+UPvr_StartSensor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static int UPvr_StartSensor(int index)
+**功能**  
+
+    - 开启sensor跟踪 
+**参数**
+
+    - index：0，主sensor；1，副sensor。主sensor为PicoNeo DK/DKS、Pico Neo及Goblin上HMD的Sensor，即头跟踪的Sensor；副sensor为DK/DKS游戏控制器的Sensor，即手部跟踪的Sensor，下同。
+**返回值**
+
+    - 0: 调用成功；1：调用失败
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Sensor.UPvr_StartSensor(index))
+	
+UPvr_ResetSensor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static int UPvr_ResetSensor(int index)
+**功能**  
+
+    - 重置sensor跟踪 
+**参数**
+
+    - index：0，主sensor；1，副sensor。
+**返回值**
+
+    - 0: 调用成功；1：调用失败
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Sensor.UPvr_ResetSensor(index)
+	
+UPvr_StopSensor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static int UPvr_StopSensor(int index)
+**功能**  
+
+    - 关闭sensor跟踪 
+**参数**
+
+    - index：0，主sensor；1，副sensor。
+**返回值**
+
+    - 0: 调用成功；1：调用失败
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Sensor.UPvr_StopSensor(index)
+
+6.3	手柄相关
+----------
+
+StartScan
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void StartScan () 
+**功能**  
+
+    - 搜索3dof手柄 
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_ControllerManager.StartScan()
+	
+StopScan
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void StopScan () 
+**功能**  
+
+    - 停止搜索3dof手柄 
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_ControllerManager.StopScan()
+	
+ConnectBLE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void ConnectBLE () 
+**功能**  
+
+    - 开始连接3dof手柄 
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_ControllerManager.ConnectBLE ()
+	
+UPvr_GetControllerPower
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static int UPvr_GetControllerPower(int hand)
+**功能**  
+
+    - 获取手柄电量 
+**参数**
+
+    - 对于Goblin，请传入0；对于Pico Neo，则对应相应的手柄0/1（对于Pico Neo，0/1为手柄的索引号，0代表第一个绑定的手柄，1代表第二个绑定的手柄，下同）
+**返回值**
+
+    - Goblin1-4，Pico Neo 1-9
+**调用方式**
+
+    - Pvr_ControllerAPI.Controller.UPvr_GetControllerPower(int hand)
+
+changeMainControllerCallback
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void changeMainControllerCallback(string index)
+**功能**  
+
+    - 主控手改变的回调
+**参数**
+
+    - 0/1代表当前主控手柄改变为哪个（主控手柄为为启用射线参与UI交互的Neo DK/DKS、Pico Neo及Goblin上HMD的Sensor，即头跟踪的Sensor；副sensor为DK/DKS游戏控制器的Sensor，即手部跟踪的Sensor，下同。
+**返回值**
+
+    - 无
+**调用方式**
+
+    - 主控手柄改变时回调 
+
+setControllerServiceBindState
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void setControllerServiceBindState (string state)
+**功能**  
+
+    - Pico Neo手柄绑定的回调
+**参数**
+
+    - 0为bind失败，1为bind成功
+**返回值**
+
+    - 无
+
+**调用方式**
+
+    - Pico Neo手柄绑定的回调
+	
+setControllerStateChanged
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void setControllerStateChanged (string state)
+**功能**  
+
+    - Pico Neo手柄连接状态变化的回调
+**参数**
+
+    - 两个字符的字符串，第一个数字是手柄序号，第二个数字是手柄连接状态，例如0,0 即为0手柄断开 0,1即为0手柄连接上
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pico Neo 手柄连接状态变化的回调
+
+setHbServiceBindState
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void setHbServiceBindState (string state)
+**功能**
+  
+    - 3dof手柄service bind绑定状态改变时回调
+**参数**
+
+    - 0-已解绑，1-已绑定，2-未知 
+
+**返回值**
+
+    - 无
+**调用方式**
+
+    - 3dof手柄service bind绑定状态改变时回调 
+
+isServiceExisted
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+    - public static bool isServiceExisted ()
+**功能**  
+
+    - 判定Pico Controller Service是否存在
+**参数**
+
+    - true为存在，false为不存在 
+**返回值**
+
+    - 无
+**调用方式**
+
+    - 在Pvr_ControllerManager类中直接用 	
+
+UPvr_GetControllerState
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static ControllerState UPvr_GetControllerState (int hand)
+**功能** 
+ 
+    - 获取Pico Controller连接状态
+**参数**
+
+    - 对于Goblin，请传入0；对于Pico Neo，则对应相应的手柄0/1
+**返回值**
+
+    - 连接状态 
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.UPvr_GetControllerState(hand) 	
+	
+ResetController
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void ResetController(int num)
+**功能** 
+ 
+    - 重置手柄姿态
+**参数**
+
+    -  0/1，假如一个手柄或者使用3dof手柄，则传0
+**返回值**
+
+    - 无 
+**调用方式**
+
+    - Pvr_ControllerManager.ResetController(num)	
+
+RebackToLauncher
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void RebackToLauncher ()
+**功能**
+  
+    - 退回到Launcher界面
+**参数**
+
+    -  无
+**返回值**
+
+    - 无 
+**调用方式**
+
+    - 在Pvr_ControllerManager类中直接用
+	
+StartUpgrade
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static bool StartUpgrade ()
+**功能**  
+
+    - 开始升级
+**参数**
+
+    -  无
+**返回值**
+
+    - 成功或失败 
+**调用方式**
+
+    - Pvr_ControllerManager.StartUpgrade()
+	
+GetBLEVersion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static long GetBLEVersion ()
+**功能**  
+
+    - 获取BLE版本
+**参数**
+
+    -  无
+**返回值**
+
+    - BLE版本 
+**调用方式**
+
+    - Pvr_ControllerManager.GetBLEVersion()
+	
+setupdateFailed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void setupdateFailed () 
+**功能**  
+
+    - 升级失败的回调
+**参数**
+
+    -  无
+**返回值**
+
+    -  无 
+**调用方式**
+
+    - 在Pvr_ControllerManager类中直接用 
+
+setupdateSuccess
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void setupdateSuccess () 
+**功能** 
+ 
+    - 升级成功的回调
+**参数**
+
+    -  无
+**返回值**
+
+    -  无 
+**调用方式**
+
+    - 在Pvr_ControllerManager类中直接用 
+	
+setupdateProgress
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void setupdateProgress (string progress) 
+**功能**  
+
+    - 升级进度的回调
+**参数**
+
+    -  进度0-100
+**返回值**
+
+    -  无 
+**调用方式**
+
+    - 在Pvr_ControllerManager类中直接用 
+	
+UPvr_GetControllerQUA
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static Quaternion UPvr_GetControllerQUA (int hand)
+**功能**  
+
+    - 获取手柄姿态
+**参数**
+
+    -  0/1——对于Goblin，请传入0；对于Pico Neo，则对应相应的手柄
+**返回值**
+
+    -  四元数，手柄姿态  
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.UPvr_GetControllerQUA(hand) 
+	
+UPvr_GetControllerPOS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static Vector3 UPvr_GetControllerPOS (int hand)
+**功能**  
+
+    - 获取手柄位置
+**参数**
+
+    -  仅适用Pico Neo，请传入对应手柄的索引
+**返回值**
+
+    -  3维向量，手柄位置   
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.UPvr_GetControllerPOS(hand)
+	
+UPvr_GetMainHandNess
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static int UPvr_GetMainHandNess()
+**功能**  
+
+    - 获取当前的主控手柄索引（注意：Pico Neo专有,在bind手柄服务成功之后才可返回正确值，我们的SDK会在应用启动时Bind手柄服务，建议开发者利用Bind回调函数判断是否bind成功）
+**参数**
+
+    -  无
+**返回值**
+
+    -  0/1   
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.UPvr_GetMainHandNess()
+
+UPvr_SetMainHandNess
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void UPvr_SetMainHandNess(int hand) 
+**功能**  
+
+    - 设置当前的主控手柄
+**参数**
+
+    -  0/1
+**返回值**
+
+    -  无  
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.UPvr_SetMainHandNess()
+	
+UPvr_GetKey
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static bool UPvr_GetKey (int hand，Pvr_KeyCode key) 
+**功能**  
+
+    - 判断按键是否按住
+**参数**
+
+    -  0/1，Pvr_KeyCode
+**返回值**
+
+    -  是否按住  
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.UPvr_GetKey(hand , key)
+
+UPvr_GetKeyDown
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+**函数名**
+
+    - public static bool UPvr_GetKeyDown (int hand，Pvr_KeyCode key) 
+**功能**  
+
+    - 判断按键是否按下
+**参数**
+
+    -  hand：手柄索引，key：指定的key 
+**返回值**
+
+    -  是否按下  
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.UPvr_GetKeyDown(hand,key)
+	
+UPvr_GetKeyUp
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+**函数名**
+
+    - public static bool UPvr_GetKeyUp(int hand，Pvr_KeyCode key) 
+**功能**  
+
+    - 判断按键是否抬起
+**参数**
+
+    -  hand：手柄索引，key：指定的key 
+**返回值**
+
+    -  是否抬起  
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.UPvr_GetKeyUp(hand ,key)
+	
+UPvr_GetKeyLongPressed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+**函数名**
+
+    - public static bool UPvr_GetKeyLongPressed (int hand，Pvr_KeyCode key)  
+**功能**  
+
+    - 判断按键是否被长按
+**参数**
+
+    -  hand：手柄索引，key：指定的key 
+**返回值**
+
+    -  是否长按  
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.UPvr_GetKeyLongPressed(hand,key)
+
+UPvr_IsTouching
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+**函数名**
+
+    - public static bool UPvr_IsTouching (int hand)  
+**功能** 
+ 
+    - 判断是否触摸了触摸板
+**参数**
+
+    -  hand：手柄索引 
+**返回值**
+
+    -  是否被触摸   
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.UPvr_IsTouching()
+
+UPvr_GetSwipeDirection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+**函数名**
+
+    - public static SwipeDirection UPvr_GetSwipeDirection(int hand)  
+**功能**  
+
+    - 获取滑动手势的状态
+**参数**
+
+    -  hand：手柄索引 
+**返回值**
+
+    -  SwipeDirection   
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.UPvr_GetSwipeDirection(hand)
+	
+UPvr_GetTouchPadPosition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+**函数名**
+
+    - public static Vector2 UPvr_GetTouchPadPosition (int hand)  
+**功能**  
+
+    - 获取触摸板的touch值
+**参数**
+
+    -  手柄索引，0/1 
+**返回值**
+
+    -  触摸板的touch值，Pico Goblin与Pico Neo相同，详见 :ref:`图 <图片>` 
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.UPvr_GetTouchPadPosition(hand)
+	
+AutoConnectHbController
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+**函数名**
+
+    - public static static void AutoConnectHbController (int scans)  
+**功能**  
+
+    - 自动搜索连接手柄
+**参数**
+
+    -  搜索时间（毫秒）
+**返回值**
+
+    -  无  
+**调用方式**
+
+    - Pvr_ControllerManager.AutoConnectHbController(scans)
+	
+setHbAutoConnectState
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+**函数名**
+
+    - public static void setHbAutoConnectState (string state)  
+**功能**  
+
+    - 自动搜索手柄的回调
+**参数**
+
+    -  无
+**返回值**
+
+    - UNKNOW：默认值
+    - NO_DEVICE：没有扫描到HB手柄
+    - ONLY_ON：只扫描到一只HB手柄
+    - MORE_THAN_ONE：扫描到多只HB手柄
+    - LAST_CONNECTED：扫描到上一次连接过的HB手柄
+    - FACTORY_DEFAULT：扫描到工厂绑定的HB手柄（暂时未启用）
+  
+**调用方式**
+
+    - Pvr_ControllerManager.setHbAutoConnectState(state)
+
+Upvr_GetControllerTriggerValue
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+**函数名**
+
+    - public static int Upvr_GetControllerTriggerValue(int hand) 
+**功能** 
+ 
+    - 获取扳机的输入值（仅适用于6dof Controller）
+**参数**
+
+    -  0/1
+**返回值**
+
+    -  true，点击；false，没有点击
+  
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.Upvr_ControllerTriggerClick（hand）
+	
+Upvr_ControllerTriggerClick
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+**函数名**
+
+    - public static bool Upvr_ControllerTriggerClick(int hand)  
+**功能** 
+ 
+    - 判断扳机是否点击（仅适用于6dof Controller，且仅当扳机按到底部并抬起一次判定为扳机键点击）
+
+**参数**
+
+    -  0/1
+**返回值**
+
+    -  true，点击；false，没有点击
+  
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Controller.Upvr_ControllerTriggerClick（hand）                          
+
+6.4 电量音量亮度服务相关
+----------		
+
+UPvr_InitBatteryVolClass
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public bool UPvr_InitBatteryVolClass()
+**功能**  
+
+    - 初始化电量音量亮度服务(在使用电量音量亮度等服务前请首先调用此接口初始化)
+**参数**
+
+    - 无
+**返回值**
+
+    - 是否初始化成功
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_InitBatteryVolClass()
+
+UPvr_StartAudioReceiver
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public bool UPvr_StartAudioReceiver ()
+**功能**  
+
+    - 开启音量服务
+**参数**
+
+    - 无
+**返回值**
+
+    - 是否开启成功
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_StartAudioReceiver()
+
+UPvr_SetAudio
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public void UPvr_SetAudio(string s)
+**功能** 
+ 
+    - 音量发生变化时通知unity当前音量值
+**参数**
+
+    - 变化之后的音量值
+**返回值**
+
+    - 无
+**调用方式**
+
+    - 该接口为底层android调用，unity无需调用，如果需要在音量发生变化时做操作，可在此方法内部写入相关逻辑。
+	
+UPvr_StopAudioReceiver
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public bool UPvr_StopAudioReceiver ()
+**功能**  
+
+    - 关闭音量服务
+**参数**
+
+    - 无
+**返回值**
+
+    - 是否关闭成功
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_StopAudioReceiver()
+	
+UPvr_StartBatteryReceiver
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public bool UPvr_StartBatteryReceiver ()
+**功能**  
+
+    - 开启电量服务
+**参数**
+
+    - 无
+**返回值**
+
+    - 是否开启成功
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_StartBatteryReceiver()
+	
+UPvr_SetBattery
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public void UPvr_SetBattery(string s)
+**功能**  
+
+    - 电池电量发生变化时通知unity当前电量值
+**参数**
+
+    - 变化之后的电量值（范围是0.00~1.00）
+**返回值**
+
+    - 无
+**调用方式**
+
+    - 该接口为底层android调用，unity无需调用，如果需要在电量发生变化时做操作，可在此方法内部写入相关逻辑。
+
+UPvr_StopBatteryReceiver
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public bool UPvr_StopBatteryReceiver ()
+**功能**  
+
+    - 关闭电量服务
+**参数**
+
+    - 无
+**返回值**
+
+    - 是否关闭成功
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_StopBatteryReceiver()	
+
+UPvr_GetMaxVolumeNumber
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public int UPvr_GetMaxVolumeNumber ()
+**功能**  
+
+    - 获取最大音量
+**参数**
+
+    - 无
+**返回值**
+
+    - 音量最大值
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_GetMaxVolumeNumber()
+
+UPvr_GetCurrentVolumeNumber
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public int UPvr_GetCurrentVolumeNumber ()
+**功能**  
+
+    - 获取当前音量
+**参数**
+
+    - 无
+**返回值**
+
+    - 当前音量值(范围是0~15)
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_GetCurrentVolumeNumber()
+	
+UPvr_VolumeUp
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public bool UPvr_VolumeUp ()
+**功能**
+  
+    - 提高音量
+**参数**
+
+    - 无
+**返回值**
+
+    - 是否成功
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_VolumeUp()	
+	
+UPvr_VolumeDown
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public bool UPvr_VolumeDown ()
+**功能**  
+
+    - 降低音量
+**参数**
+
+    - 无
+**返回值**
+
+    - 是否成功
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_VolumeDown()
+
+UPvr_SetVolumeNum
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public bool UPvr_SetVolumeNum(int volume)
+**功能**  
+
+    - 设置音量
+**参数**
+
+    - 设置的音量大小数值(音量值的范围是0~15)
+**返回值**
+
+    - 是否设置成功
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_SetVolumeNum(volume)	
+
+
+UPvr_SetBrightness
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public bool UPvr_SetBrightness(int brightness)
+**功能** 
+ 
+    - 设置亮度（普通手机版本，不适用于PicoNeo）
+**参数**
+
+    - 亮度值（亮度值的范围是0~255）
+**返回值**
+
+    - 是否设置成功
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_SetBrightness(bn)
+
+UPvr_GetScreenBrightnessLevel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static int[] UPvr_GetScreenBrightnessLevel()
+**功能** 
+ 
+    - 获取当前屏幕亮度等级（仅适用于Goblin）
+**参数**
+
+    - 无
+**返回值**
+
+    - int 数组。第一位是支持的总亮度级别，第二位是当前亮度等级，从第三位开始至结束位是亮度等级区间值
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_GetScreenBrightnessLevel()
+
+UPvr_SetScreenBrightnessLevel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void UPvr_SetScreenBrightnessLevel(int vrBrightness, int level)
+**功能**  
+
+    - 设置屏幕亮度（仅适用于Goblin）
+**参数**
+
+    - vrBrightness：亮度模式；level：亮度值（亮度等级值）	
+    - 如果vrBrightness传入1，level 传入亮度等级； 如果vrBrightness传入0， 代表采用系统 默认的亮度设置模式，level可以设置1~255之间的值。
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_SetScreenBrightnessLevel(vrBrightness,level)
+
+UPvr_IsHmdExist
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public bool UPvr_IsHmdExist()
+**功能**  
+
+    - 判断是否是HMD头戴设备
+**参数**
+
+    - 无
+**返回值**
+
+    - true是HMD , false不是HMD
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_IsHmdExist()	
+	
+UPvr_GetHmdScreenBrightness
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public int UPvr_GetHmdScreenBrightness()
+**功能** 
+ 
+    - 获取当前HMD设备亮度值（仅适用于PicoNeo）
+**参数**
+
+    - 无
+**返回值**
+
+    - int 当前亮度值（亮度值的范围是0~255）
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_GetHmdScreenBrightness()
+	
+UPvr_SetHmdScreenBrightness
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public bool UPvr_SetHmdScreenBrightness(int brightness)
+**功能**  
+
+    - 设置HMD设备亮度值（仅适用于PicoNeo）
+**参数**
+
+    - 亮度值（亮度值的范围是0~255）
+**返回值**
+
+    - 是否设置成功
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_SetHmdScreenBrightness(brightness)
+
+UPvr_GetCommonBrightness
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public int UPvr_GetCommonBrightness()
+**功能**  
+
+    - 获取当前通用设备亮度值（Pico Neo和普通手机均适用）
+**参数**
+
+    - 无
+**返回值**
+
+    - 当前亮度值（亮度值的范围是0~255）
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_GetCommonBrightness()
+	
+UPvr_SetCommonBrightness
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public bool UPvr_SetCommonBrightness(int brightness)
+**功能**  
+
+    - 设置通用设备亮度值（Pico Neo和普通手机均适用）
+**参数**
+
+    - 亮度值（亮度值的范围是0~255）
+**返回值**
+
+    - 是否设置成功
+**调用方式**
+
+    - Pvr_UnitySDKAPI.VolumePowerBrightness.UPvr_SetCommonBrightness(brightness)
+
+	
+6.5 设置环绕立体声相关（仅限PicoNeo DK/DKS适用）
+----------	
+
+UPvr_OpenEffects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public void UPvr_OpenEffects()
+**功能** 
+ 
+    - 打开音效库
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Audio3D.UPvr_OpenEffects()
+
+UPvr_CloseEffects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public void UPvr_CloseEffects()
+**功能**  
+
+    - 关闭音效库
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Audio3D.UPvr_CloseEffects()
+
+UPvr_EnableSurround
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public void UPvr_EnableSurround()
+**功能**  
+
+    - 使能环绕音
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Audio3D.UPvr_EnableSurround()
+	
+UPvr_SetSurroundroomType
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public void UPvr_SetSurroundroomType(int type)
+**功能**  
+
+    - 打开环绕音模拟房间大小
+**参数**
+
+    - type的取值为1 小房间、 2中等 、3大房间（必须先使能环绕音）
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Audio3D.UPvr_SetSurroundroomType()
+	
+UPvr_OpenRoomcharacteristics
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public void UPvr_OpenRoomcharacteristics()
+**功能**  
+
+    - 打开模拟房间的墙壁材质Damped对声音的反射（必须先使能环绕音）
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Audio3D.UPvr_OpenRoomcharacteristics()
+		
+UPvr_CloseRoomcharacteristics
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public void UPvr_CloseRoomcharacteristics()
+**功能** 
+ 
+    - 关闭模拟房间的墙壁材质Damped对声音的反射
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Audio3D.UPvr_CloseRoomcharacteristics()
+	
+UPvr_EnableReverb
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public void UPvr_EnableReverb()
+**功能** 
+ 
+    - 使能回声算法
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Audio3D.UPvr_EnableReverb()
+
+
+6.6 播放音频相关
+----------	
+
+UPvr_StartAudioEffect
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public void UPvr_StartAudioEffect(String audioFile,bool isSdcard)
+**功能** 
+ 
+    - 设置播放音频的绝对路径 
+**参数**
+
+    - audioFile，音频文件在Pico Android设备中的的绝对路径。
+    - 例如string audioFile = "/sdcard/ test.mp3";
+    - string audioFile = " /system/newdir/GuitarLoop.wav";
+    - isSdcard为预留接口，可设置ture
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Audio3D.UPvr_StartAudioEffect(audioFile,isSdcard)
+
+UPvr_StopAudioEffect
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public void UPvr_StopAudioEffect()
+**功能**  
+
+    - 停止音频播放 
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Audio3D.UPvr_StopAudioEffect()
+
+UPvr_ReleaseAudioEffect
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public void UPvr_ReleaseAudioEffect()
+**功能**  
+
+    - 释放掉音乐（调用后不能再加载音乐，建议在退出程序之前调用） 
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.Audio3D.releaseAudioEffect()
+
+	
+	
+6.7 头戴距离传感器相关
+----------
+
+UPvr_InitPsensor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void UPvr_InitPsensor() 
+**功能**  
+
+    - 初始化距离传感器 
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI. Sensor. UPvr_InitPsensor ()
+	
+UPvr_GetPsensorState
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static int UPvr_GetPsensorState() 
+**功能**  
+
+    - 获得头戴距离传感器的状态 
+**参数**
+
+    - 无
+**返回值**
+
+    - 带上头戴时**返回值**是0，远离时**返回值**是1
+**调用方式**
+
+    - Pvr_UnitySDKAPI. Sensor. UPvr_GetPsensorState()	
+    - 注意：获得Psensor的状态之前需要调用UPvr_InitPsensor进行初始化
+	
+UPvr_UnregisterPsensor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void UPvr_UnregisterPsensor () 
+**功能** 
+ 
+    - 释放距离传感器 
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI. Sensor. UPvr_UnregisterPsensor ()
+
+	
+6.8 马达震动相关（仅限PicoNeo DK/DKS使用）
+----------
+
+UPvr_HasControllerVibrator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static bool UPvr_HasControllerVibrator() 
+**功能** 
+ 
+    - 判断是否支持马达震动 
+**参数**
+
+    - 无
+**返回值**
+
+    - 是否支持马达震动
+**调用方式**
+
+    - Pvr_UnitySDKAPI. Haptics. UPvr_HasControllerVibrator ()
+	
+UPvr_SetControllerVibrateMode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void UPvr_SetControllerVibrateMode(int[] pattern, int length, int repeat) 
+**功能**  
+
+    - 设置间歇震动模式 
+**参数**
+
+    - int[] pattern =new int[5] { vibrationDuration,silienceDuration,repeat_times, vibrationStrength, whichHaptic }
+    - vibrationDuration：震动时长，单位毫秒
+    - silienceDuration：静止时长，单位毫秒
+    - repeat_times：重复次数
+    - vibrationStrength：震动强度（ 0--127之间）
+    - whichHaptic：指定马达 1，左  2，右   3，左右 
+    - length：pattern的长度，必须为5
+    - repeat：设置为1
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI. Haptics. UPvr_SetControllerVibrateMode(pattern, length, repeat)
+
+UPvr_SetControllerVibrateTime
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void UPvr_SetControllerVibrateTime(int milliseconds) 
+**功能**  
+
+    - 设置持续震动 
+**参数**
+
+    - 震动时间
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI. Haptics. UPvr_SetControllerVibrateTime (milliseconds)	
+	
+UPvr_CancelControllerVibrate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void UPvr_CancelControllerVibrate() 
+**功能**  
+
+    - 取消马达震动 
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI. Haptics. UPvr_CancelControllerVibrate ()
+	
+
+6.9	硬件设备相关
+----------
+
+UPvr_GetDeviceMode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static DeviceMode UPvr_GetDeviceMode () 
+**功能**  
+
+    - 获得设备类型 
+**参数**
+
+    - enum DeviceMode，包括Pico NeoDKS、Pico NeoDK、Goblin、Pico Neo、Other
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.System.UPvr_GetDeviceMode ()
+	
+UPvr_GetDeviceSN
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static string UPvr_GetDeviceSN ()
+**功能**  
+
+    - 获得设备SN串号 
+**参数**
+
+    - 无
+**返回值**
+
+    - 获得设备SN串号
+**调用方式**
+
+    - Pvr_UnitySDKAPI.System.UPvr_GetDeviceSN ()
+
+UPvr_ShutDown
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void UPvr_ShutDown()
+**功能**  
+
+    - 关机 
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.System.UPvr_ShutDown ()
+	
+UPvr_Reboot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void UPvr_Reboot ()
+**功能**  
+
+    - 关机 
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI.System.UPvr_Reboot ()
+
+UPvr_Sleep
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**函数名**
+
+    - public static void UPvr_Sleep ()
+**功能**
+  
+    - 关机 
+**参数**
+
+    - 无
+**返回值**
+
+    - 无
+**调用方式**
+
+    - Pvr_UnitySDKAPI. System. UPvr_Sleep ()
+
+**注意：用UPvr_ShutDown、UPvr_Reboot、UPvr_Sleep接口，需要在AndroidManifest中添加如下权限，并且需要系统签名：**
+	
+::
+
+	android:sharedUserId="android.uid.system"
+	<uses-permission android:name="android.permission.DEVICE_POWER" />
+
+	
