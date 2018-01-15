@@ -65,7 +65,8 @@ Pico 3dof Controller目前支持Pico Goblin、Pico U两种设备，使用Pico 3d
 
 然后是触摸板，触摸板的示意图如下：
 
-.. _触摸板的示意图
+触摸板的示意图
+""""""""""""""""""""""""
 
 .. image:: _static/5.4.png
 图5.4 触摸板示意图
