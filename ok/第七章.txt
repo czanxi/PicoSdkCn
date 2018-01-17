@@ -406,11 +406,10 @@ ret_msg	      string     	   错误信息字符串
 	
 .. code-block:: java
 
-    {
-    "ret_code": “SUCCESS”,
-    "ret_msg" : "OK"
+    { 
+    "ret_code":"SUCCESS", 
+    "ret_msg":"OK" 
     }
-
 
 表7.1 支付结果通知中的通知参数
 
