@@ -339,8 +339,10 @@ NO_DATA	                 没有查询到数据
 
 .. code-block:: java
     
+    {
     "ret_code":"00003000", 
     "ret_msg":"签名验证失败" 
+    }
     
 其他ret_code码及ret_msg一览如下：
 
