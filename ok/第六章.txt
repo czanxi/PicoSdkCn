@@ -47,7 +47,7 @@ UPvr_StartSensor
     - 0: 调用成功；1：调用失败
 **调用方式**
 
-    - Pvr_UnitySDKAPI.Sensor.UPvr_StartSensor(index))
+    - Pvr_UnitySDKAPI.Sensor.UPvr_StartSensor(index)
 	
 UPvr_ResetSensor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
