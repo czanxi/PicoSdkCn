@@ -5,7 +5,7 @@ PicoVRAndroidSDK_Unity
 .. toctree::
    :hidden:
 
-   第一章
+   chapter_one
    chapter_two
    chapter_three
    chapter_four
