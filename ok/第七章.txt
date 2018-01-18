@@ -83,7 +83,7 @@ Activity声明：
 
 开发者信息（国内）
 
-.. code-block:: java
+.. code-block:: xml
 
     <!--APPID-->
     <meta-data
@@ -109,7 +109,7 @@ Activity声明：
 
 开发者信息（国外）
 
-.. code-block:: java
+.. code-block:: xml
 
     <!--APPID-->
     <meta-data
@@ -206,14 +206,14 @@ pay_code    商品码
 
 示例1：
 
-.. code-block:: java
+.. code-block:: xml
 
     Pay("{'subject':'游戏',' body ':'购买完整游戏','order_id ':'10000','total 	':'10','goods_tag ':'game' }");
 
 
 示例2：
 
-.. code-block:: java
+.. code-block:: xml
 
     Pay("{'subject':'游戏','body ':'购买完整游戏','order_id ':'10000',','goods_tag ':'game','pay_code':'123' }");
 
