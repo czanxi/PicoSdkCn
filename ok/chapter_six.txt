@@ -622,6 +622,7 @@ UPvr_GetTouchPadPosition
 **返回值**
 
     -  触摸板的touch值，Pico Goblin与Pico Neo相同，详见 图5.4_
+
 .. _图5.4: http://picosdkcn.readthedocs.io/en/latest/chapter_five.html#id5
 
 **调用方式**
